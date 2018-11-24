@@ -11,6 +11,7 @@
     "autoprefixer": "^9.3.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
+    "ejs": "^2.6.1",
     "express": "~4.16.0",
     "handlebars": "^4.0.12",
     "http-errors": "~1.6.2",
@@ -18,7 +19,11 @@
     "jquery": "^3.3.1",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.0",
+    "npm": "^6.4.1",
+    "pug": "^2.0.3",
+    "sequelize": "^4.41.2",
+    "sqlite3": "^4.0.4"
   },
   "devDependencies": {
     "css-loader": "^1.0.1",

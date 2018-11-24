@@ -13,15 +13,24 @@ router.get('/notes', function (req, res, next) {
 
 router.post('/notes/add', function (req, res, next) {
   var note = req.body.note;
-  console.log('add.....', note)
+  Note.create({ text: note }).then(() => {
+    res.send({ status: 0 })
+  }).catch(() => {
+    res.send({ status: 1, errorMsg: '数据库出错！' })
+  })
 });
 
 router.post('/notes/edit', function (req, res, next) {
-  res.send('respond with a resource defdefdef');
+  Note.update({ text: req.body.note }, { where: { id: req.body.id } }).then(() => {
+    console.log(arguments)
+    res.send({ status: 0 });
+  })
 });
 
 router.post('/notes/delete', function (req, res, next) {
-  res.send('respond with a resource defdefdef');
+  Note.destroy({ where: { id: req.body.id } }).then(() => {
+    res.send({ status: 0 });
+  })
 });
 
 

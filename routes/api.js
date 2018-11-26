@@ -12,6 +12,9 @@ router.get('/notes', function (req, res, next) {
 });
 
 router.post('/notes/add', function (req, res, next) {
+  if (!req.session.user) {
+    return res.send({ status: 1, errorMsg: '请先登录' })
+  }
   var note = req.body.note;
   Note.create({ text: note }).then(() => {
     res.send({ status: 0 })

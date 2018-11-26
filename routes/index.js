@@ -4,7 +4,23 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function (req, res, next) {
   console.log(req.query)
-  res.render('index', { title: '我的note' });
+  var data
+  if (req.session.user) {
+    data = {
+      isLogin: true,
+      user: {
+        avatar: req.session.user.avatar,
+        username: req.session.user.username
+      }
+    }
+  } else {
+    data = {
+      isLogin: false
+    }
+  }
+
+
+  res.render('index', data);
 });
 
 module.exports = router;

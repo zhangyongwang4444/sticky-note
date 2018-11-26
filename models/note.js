@@ -17,13 +17,17 @@ sequelize
     });
 */
 
-// hello time1  time2 
+// id hello UID time1  time2 
 const Note = sequelize.define('note', {
     text: {
+        type: Sequelize.STRING
+    },
+    uid: {
         type: Sequelize.STRING
     }
 });
 
+// Note.sync({ force: true })
 /*
 Note.sync().then(() => {
     return Note.create({

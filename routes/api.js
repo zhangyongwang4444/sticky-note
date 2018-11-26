@@ -24,6 +24,9 @@ router.post('/notes/add', function (req, res, next) {
 });
 
 router.post('/notes/edit', function (req, res, next) {
+  if (!req.session.user) {
+    return res.send({ status: 1, errorMsg: '请先登录' })
+  }
   Note.update({ text: req.body.note }, { where: { id: req.body.id } }).then(() => {
     console.log(arguments)
     res.send({ status: 0 });
@@ -31,6 +34,9 @@ router.post('/notes/edit', function (req, res, next) {
 });
 
 router.post('/notes/delete', function (req, res, next) {
+  if (!req.session.user) {
+    return res.send({ status: 1, errorMsg: '请先登录' })
+  }
   Note.destroy({ where: { id: req.body.id } }).then(() => {
     res.send({ status: 0 });
   })
